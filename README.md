@@ -3,299 +3,252 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
-  <meta name="theme-color" content="#0a0a0f">
-  <title>NEW VISION INTERNATIONAL — استمارة التسجيل</title>
+  <meta name="theme-color" content="#07070a">
+  <title>NEW VISION INTERNATIONAL — Inscription</title>
 
-  <!-- Font Tajawal & Inter -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg-dark: #08080d;
-      --card-bg: rgba(20, 20, 32, 0.55);
-      --card-border: rgba(255, 140, 0, 0.22);
+      --bg: #07070a;
+      --card-bg: rgba(18, 18, 26, 0.45);
+      --card-border: rgba(255, 255, 255, 0.08);
       --accent-orange: #ff8c00;
-      --accent-orange-glow: rgba(255, 140, 0, 0.45);
       --accent-purple: #a855f7;
-      --accent-purple-glow: rgba(168, 85, 247, 0.35);
-      --text-main: #f8fafc;
-      --text-muted: #a0aec0;
-      --glass-input: rgba(10, 10, 18, 0.6);
+      --text-primary: #ffffff;
+      --text-secondary: #94a3b8;
+      --input-bg: rgba(255, 255, 255, 0.03);
+      --input-border: rgba(255, 255, 255, 0.08);
     }
 
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: 'Tajawal', 'Inter', sans-serif;
+      font-family: 'Tajawal', 'Plus Jakarta Sans', sans-serif;
       -webkit-tap-highlight-color: transparent;
     }
 
     body {
-      background-color: var(--bg-dark);
-      color: var(--text-main);
+      background-color: var(--bg);
+      color: var(--text-primary);
       min-height: 100vh;
-      min-height: -webkit-fill-available;
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: space-between;
       position: relative;
       overflow-x: hidden;
     }
 
-    /* Ambient Background Animated Orbs for Ultra-Glass Effect */
-    .bg-orbs {
+    /* Minimal Glowing Background Effect */
+    .glow-container {
       position: fixed;
       top: 0; left: 0; width: 100vw; height: 100vh;
       pointer-events: none;
       z-index: 0;
-      overflow: hidden;
     }
-    .orb {
+    .glow-spot {
       position: absolute;
       border-radius: 50%;
-      filter: blur(120px);
-      opacity: 0.4;
-      animation: floatOrb 12s infinite alternate ease-in-out;
+      filter: blur(140px);
+      opacity: 0.25;
     }
-    .orb-1 {
-      width: clamp(300px, 45vw, 550px);
-      height: clamp(300px, 45vw, 550px);
-      background: #ff8c00;
-      top: -100px;
-      right: -80px;
+    .spot-1 {
+      width: 450px; height: 450px;
+      background: var(--accent-orange);
+      top: -150px; right: -100px;
     }
-    .orb-2 {
-      width: clamp(320px, 50vw, 600px);
-      height: clamp(320px, 50vw, 600px);
-      background: #7e22ce;
-      bottom: -120px;
-      left: -80px;
-      animation-delay: -6s;
+    .spot-2 {
+      width: 500px; height: 500px;
+      background: var(--accent-purple);
+      bottom: -180px; left: -120px;
     }
 
-    @keyframes floatOrb {
-      0% { transform: translate(0, 0) scale(1); }
-      100% { transform: translate(30px, 40px) scale(1.1); }
-    }
-
-    /* Glass Header */
+    /* Minimal Modern Header */
     header {
       width: 100%;
-      padding: clamp(0.9rem, 2.5vw, 1.3rem) clamp(1rem, 6vw, 8%);
+      max-width: 1000px;
+      padding: 1.5rem 1.5rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(10, 10, 15, 0.65);
-      border-bottom: 1px solid var(--card-border);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
       position: relative;
       z-index: 10;
-      gap: 1rem;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
     }
 
-    .company-logo {
+    .brand-logo {
       display: flex;
       align-items: center;
-      gap: 0.9rem;
-      flex-shrink: 0;
+      gap: 0.8rem;
     }
 
-    .logo-diamond {
-      width: clamp(40px, 5vw, 50px);
-      height: clamp(40px, 5vw, 50px);
-      background: rgba(10, 10, 15, 0.8);
-      border: 2.5px solid var(--accent-orange);
-      border-radius: 14px;
-      transform: rotate(45deg);
+    .logo-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(255,140,0,0.2), rgba(168,85,247,0.2));
+      border: 1px solid rgba(255, 140, 0, 0.4);
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 0 20px var(--accent-orange-glow);
-    }
-
-    .logo-symbol {
-      transform: rotate(-45deg);
-      font-size: clamp(1.3rem, 2.2vw, 1.6rem);
       font-weight: 800;
-      color: var(--accent-purple);
-      text-shadow: 0 0 12px var(--accent-purple-glow);
+      font-size: 1.2rem;
+      color: var(--accent-orange);
+      backdrop-filter: blur(10px);
     }
 
-    .logo-text-wrap {
+    .brand-names {
       display: flex;
       flex-direction: column;
     }
 
-    .logo-title {
+    .brand-title {
       font-weight: 800;
-      font-size: clamp(1rem, 1.6vw, 1.2rem);
-      color: #fff;
+      font-size: 1.05rem;
       letter-spacing: 0.5px;
     }
 
-    .logo-sub {
-      font-size: clamp(0.65rem, 1vw, 0.75rem);
-      color: var(--accent-orange);
-      letter-spacing: 1.5px;
-      font-weight: 700;
-    }
-
-    .company-title {
-      font-size: clamp(1.05rem, 1.8vw, 1.35rem);
-      font-weight: 800;
-      color: #fff;
-      text-align: center;
-    }
-    .company-title span {
+    .brand-sub {
+      font-size: 0.72rem;
       color: var(--accent-purple);
-      font-size: clamp(0.78rem, 1.2vw, 0.88rem);
-      display: block;
-      font-weight: 500;
-      margin-top: 2px;
+      font-weight: 600;
     }
 
-    /* Glass Language Button */
-    .lang-btn {
+    /* Language Switcher Badge */
+    .lang-switcher {
       background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 140, 0, 0.35);
-      padding: 0.55rem 1.1rem;
-      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 0.45rem 1rem;
+      border-radius: 100px;
       color: #fff;
-      font-size: 0.85rem;
-      font-weight: 700;
+      font-size: 0.82rem;
+      font-weight: 600;
       cursor: pointer;
       backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: all 0.3s ease;
       display: flex;
       align-items: center;
-      gap: 0.5rem;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-      flex-shrink: 0;
+      gap: 0.4rem;
     }
 
-    .lang-btn:hover {
-      background: rgba(255, 140, 0, 0.18);
+    .lang-switcher:hover {
       border-color: var(--accent-orange);
-      box-shadow: 0 0 20px var(--accent-orange-glow);
-      transform: translateY(-2px);
+      background: rgba(255, 140, 0, 0.1);
     }
 
-    /* Main Container & Modern Glass Form */
+    /* Modern Minimal Glass Card */
     main {
       position: relative;
       z-index: 1;
       width: 100%;
-      max-width: 540px;
-      padding: clamp(1.8rem, 5vw, 3rem) 1.2rem;
+      max-width: 460px;
+      padding: 1rem 1.2rem;
       margin: auto 0;
     }
 
-    .form-card {
+    .card {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
-      border-radius: clamp(20px, 4vw, 28px);
-      padding: clamp(2rem, 5vw, 2.8rem) clamp(1.4rem, 4vw, 2.2rem);
-      backdrop-filter: blur(25px);
-      -webkit-backdrop-filter: blur(25px);
-      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-      position: relative;
+      border-radius: 24px;
+      padding: 2.2rem 1.8rem;
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
     }
 
-    .form-card h2 {
-      font-size: clamp(1.4rem, 2.5vw, 1.7rem);
-      color: #fff;
-      margin-bottom: 0.4rem;
-      text-align: center;
-      font-weight: 800;
-    }
-
-    .form-card p {
-      color: var(--text-muted);
-      font-size: clamp(0.88rem, 1.5vw, 0.98rem);
+    .card-header {
       text-align: center;
       margin-bottom: 2rem;
     }
 
-    .form-group {
-      margin-bottom: 1.3rem;
+    .card-title {
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin-bottom: 0.3rem;
     }
 
-    .form-group label {
+    .card-subtitle {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+    }
+
+    /* Form Fields */
+    .field {
+      margin-bottom: 1.2rem;
+    }
+
+    .field label {
       display: block;
-      margin-bottom: 0.45rem;
-      font-size: 0.95rem;
-      color: var(--text-main);
+      font-size: 0.88rem;
       font-weight: 600;
+      color: #e2e8f0;
+      margin-bottom: 0.4rem;
     }
 
-    .form-control {
+    .field input {
       width: 100%;
-      padding: 0.9rem 1.2rem;
-      background: var(--glass-input);
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 0.85rem 1rem;
+      background: var(--input-bg);
+      border: 1px solid var(--input-border);
       border-radius: 14px;
       color: #fff;
-      font-size: 1rem;
+      font-size: 0.95rem;
       outline: none;
       transition: all 0.3s ease;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
     }
 
-    .form-control:focus {
+    .field input:focus {
       border-color: var(--accent-orange);
-      background: rgba(15, 15, 25, 0.85);
-      box-shadow: 0 0 20px var(--accent-orange-glow);
+      background: rgba(255, 255, 255, 0.06);
+      box-shadow: 0 0 15px rgba(255, 140, 0, 0.2);
     }
 
-    /* Elevated Glass Button */
-    .btn-submit {
+    /* Fluid Modern Button */
+    .submit-btn {
       width: 100%;
-      padding: 1rem;
-      margin-top: 1.2rem;
-      background: linear-gradient(135deg, var(--accent-orange), #ea580c);
+      padding: 0.95rem;
+      margin-top: 1rem;
+      background: linear-gradient(135deg, var(--accent-orange), #e67e00);
       border: none;
       border-radius: 14px;
       color: #fff;
-      font-size: 1.1rem;
-      font-weight: 800;
+      font-size: 1rem;
+      font-weight: 700;
       cursor: pointer;
       transition: all 0.3s ease;
-      box-shadow: 0 6px 25px var(--accent-orange-glow);
+      box-shadow: 0 8px 25px rgba(255, 140, 0, 0.3);
     }
 
-    .btn-submit:disabled {
-      background: #27272a;
-      color: #71717a;
+    .submit-btn:disabled {
+      background: rgba(255, 255, 255, 0.08);
+      color: #64748b;
       cursor: not-allowed;
       box-shadow: none;
-      opacity: 0.55;
     }
 
-    .btn-submit:not(:disabled):hover {
+    .submit-btn:not(:disabled):hover {
       transform: translateY(-2px);
-      box-shadow: 0 10px 30px rgba(255, 140, 0, 0.65);
+      box-shadow: 0 12px 30px rgba(255, 140, 0, 0.5);
     }
 
-    .status-msg {
-      margin-top: 1.2rem;
-      padding: 0.9rem;
+    .alert {
+      margin-top: 1rem;
+      padding: 0.8rem;
       border-radius: 12px;
       text-align: center;
-      font-weight: 700;
+      font-size: 0.9rem;
+      font-weight: 600;
       display: none;
-      backdrop-filter: blur(10px);
     }
 
-    .status-msg.success {
+    .alert-success {
       background: rgba(34, 197, 94, 0.15);
-      border: 1px solid #22c55e;
+      border: 1px solid rgba(34, 197, 94, 0.3);
       color: #4ade80;
     }
 
@@ -303,232 +256,192 @@
       position: relative;
       z-index: 10;
       padding: 1.5rem;
-      color: var(--text-muted);
-      font-size: 0.82rem;
+      color: var(--text-secondary);
+      font-size: 0.8rem;
       text-align: center;
-    }
-
-    @media (max-width: 640px) {
-      header {
-        flex-wrap: wrap;
-        justify-content: space-between;
-      }
-      .company-title {
-        order: 3;
-        width: 100%;
-        margin-top: 0.5rem;
-        padding-top: 0.5rem;
-        border-top: 1px solid rgba(255, 255, 255, 0.08);
-      }
     }
   </style>
 </head>
 <body>
 
-  <!-- Ambient Animated Glass Orbs -->
-  <div class="bg-orbs">
-    <div class="orb orb-1"></div>
-    <div class="orb orb-2"></div>
+  <!-- Background Orbs -->
+  <div class="glow-container">
+    <div class="glow-spot spot-1"></div>
+    <div class="glow-spot spot-2"></div>
   </div>
 
-  <!-- Glass Header -->
+  <!-- Header -->
   <header>
-    <div class="company-logo">
-      <div class="logo-diamond">
-        <span class="logo-symbol">N</span>
-      </div>
-      <div class="logo-text-wrap">
-        <span class="logo-title">NEW VISION</span>
-        <span class="logo-sub">INTERNATIONAL</span>
+    <div class="brand-logo">
+      <div class="logo-icon">N</div>
+      <div class="brand-names">
+        <span class="brand-title">NEW VISION</span>
+        <span class="brand-sub">INTERNATIONAL</span>
       </div>
     </div>
 
-    <div class="company-title">
-      <span id="txt-header-title">نيوفيزيون انترناسيونال</span>
-      <span id="txt-header-sub">استمارة التسجيل الرسمية</span>
-    </div>
-
-    <button class="lang-btn" id="langToggle" aria-label="تغيير اللغة">
-      🌐 <span id="langLabel">Français</span>
+    <button class="lang-switcher" id="langBtn">
+      🌐 <span id="langText">Français</span>
     </button>
   </header>
 
-  <!-- Main Glass Card Form -->
+  <!-- Card Form -->
   <main>
-    <div class="form-card">
-      <h2 id="txt-form-title">ابدأ خطوتك الأولى الآن</h2>
-      <p id="txt-form-subtitle">يرجى إكمال جميع البيانات لتفعيل زر الإرسال</p>
+    <div class="card">
+      <div class="card-header">
+        <h1 class="card-title" id="t-title">ابدأ خطوتك الأولى الآن</h1>
+        <p class="card-subtitle" id="t-sub">يرجى ملء جميع البيانات لتفعيل زر الإرسال</p>
+      </div>
 
-      <form id="registrationForm">
-        <div class="form-group">
-          <label for="firstName" id="lbl-firstName">الاسم</label>
-          <input type="text" id="firstName" name="الاسم" class="form-control" placeholder="أدخل اسمك" required>
+      <form id="appForm">
+        <div class="field">
+          <label for="firstName" id="l-firstName">الاسم</label>
+          <input type="text" id="firstName" name="الاسم" placeholder="أدخل اسمك" required>
         </div>
 
-        <div class="form-group">
-          <label for="lastName" id="lbl-lastName">اللقب</label>
-          <input type="text" id="lastName" name="اللقب" class="form-control" placeholder="أدخل لقبك" required>
+        <div class="field">
+          <label for="lastName" id="l-lastName">اللقب</label>
+          <input type="text" id="lastName" name="اللقب" placeholder="أدخل لقبك" required>
         </div>
 
-        <div class="form-group">
-          <label for="phone" id="lbl-phone">رقم الهاتف</label>
-          <input type="tel" id="phone" name="رقم الهاتف" class="form-control" placeholder="06XX XX XX XX" required>
+        <div class="field">
+          <label for="phone" id="l-phone">رقم الهاتف</label>
+          <input type="tel" id="phone" name="رقم الهاتف" placeholder="06XX XX XX XX" required>
         </div>
 
-        <div class="form-group">
-          <label for="job" id="lbl-job">ماذا تعمل / المهنة</label>
-          <input type="text" id="job" name="المهنة" class="form-control" placeholder="مثال: مهندس، طالب، تاجر..." required>
+        <div class="field">
+          <label for="job" id="l-job">ماذا تعمل / المهنة</label>
+          <input type="text" id="job" name="المهنة" placeholder="مثال: مهندس، طالب..." required>
         </div>
 
-        <button type="submit" id="submitBtn" class="btn-submit" disabled>إرسال البيانات</button>
-        
-        <div id="statusMsg" class="status-msg"></div>
+        <button type="submit" id="btnSubmit" class="submit-btn" disabled>إرسال البيانات</button>
+
+        <div id="alertMsg" class="alert alert-success"></div>
       </form>
     </div>
   </main>
 
   <footer>
-    <span id="txt-footer">© 2026 NEW VISION INTERNATIONAL — جميع الحقوق محفوظة.</span>
+    <span id="t-footer">© 2026 NEW VISION INTERNATIONAL — جميع الحقوق محفوظة.</span>
   </footer>
 
   <script>
-    const form = document.getElementById('registrationForm');
-    const submitBtn = document.getElementById('submitBtn');
-    const inputs = form.querySelectorAll('.form-control');
-    const statusMsg = document.getElementById('statusMsg');
-    const langToggle = document.getElementById('langToggle');
-    const langLabel = document.getElementById('langLabel');
+    const form = document.getElementById('appForm');
+    const submitBtn = document.getElementById('btnSubmit');
+    const inputs = form.querySelectorAll('input');
+    const alertMsg = document.getElementById('alertMsg');
+    const langBtn = document.getElementById('langBtn');
+    const langText = document.getElementById('langText');
 
-    const translations = {
+    const i18n = {
       ar: {
         dir: 'rtl',
         lang: 'ar',
-        headerTitle: 'نيوفيزيون انترناسيونال',
-        headerSub: 'استمارة التسجيل الرسمية',
-        formTitle: 'ابدأ خطوتك الأولى الآن',
-        formSubtitle: 'يرجى إكمال جميع البيانات لتفعيل زر الإرسال',
+        title: 'ابدأ خطوتك الأولى الآن',
+        sub: 'يرجى ملء جميع البيانات لتفعيل زر الإرسال',
         firstName: 'الاسم',
-        phFirstName: 'أدخل اسمك',
+        pFirstName: 'أدخل اسمك',
         lastName: 'اللقب',
-        phLastName: 'أدخل لقبك',
+        pLastName: 'أدخل لقبك',
         phone: 'رقم الهاتف',
-        phPhone: '06XX XX XX XX',
+        pPhone: '06XX XX XX XX',
         job: 'ماذا تعمل / المهنة',
-        phJob: 'مثال: مهندس، طالب، تاجر...',
+        pJob: 'مثال: مهندس، طالب...',
         submit: 'إرسال البيانات',
         sending: 'جاري الإرسال...',
-        success: '✓ تم إرسال معلوماتك بنجاح إلى N-Vision International!',
-        error: 'حدث خطأ أثناء الإرسال، يرجى المحاولة لاحقاً.',
+        success: '✓ تم الإرسال بنجاح إلى N-Vision International !',
         footer: '© 2026 NEW VISION INTERNATIONAL — جميع الحقوق محفوظة.',
-        btnLang: 'Français'
+        btn: 'Français'
       },
       fr: {
         dir: 'ltr',
         lang: 'fr',
-        headerTitle: 'N-VISION INTERNATIONAL',
-        headerSub: 'Formulaire d\'inscription officiel',
-        formTitle: 'Faites votre premier pas maintenant',
-        formSubtitle: 'Veuillez remplir tous les champs pour activer le bouton',
+        title: 'Faites votre premier pas',
+        sub: 'Veuillez remplir tous les champs pour activer le bouton',
         firstName: 'Prénom',
-        phFirstName: 'Entrez votre prénom',
+        pFirstName: 'Votre prénom',
         lastName: 'Nom',
-        phLastName: 'Entrez votre nom',
-        phone: 'Numéro de téléphone',
-        phPhone: '06XX XX XX XX',
-        job: 'Profession / Occupation',
-        phJob: 'Ex: Ingénieur, Étudiant, Commerçant...',
+        pLastName: 'Votre nom',
+        phone: 'Téléphone',
+        pPhone: '06XX XX XX XX',
+        job: 'Profession',
+        pJob: 'Ex: Étudiant, Ingénieur...',
         submit: 'Envoyer les données',
         sending: 'Envoi en cours...',
-        success: '✓ Vos informations ont été envoyées avec succès à N-Vision International !',
-        error: 'Une erreur est survenue, veuillez réessayer plus tard.',
+        success: '✓ Envoyé avec succès à N-Vision International !',
         footer: '© 2026 NEW VISION INTERNATIONAL — Tous droits réservés.',
-        btnLang: 'العربية'
+        btn: 'العربية'
       }
     };
 
-    let currentLang = 'ar';
+    let curLang = 'ar';
 
-    function setLanguage(lang) {
-      currentLang = lang;
-      const t = translations[lang];
-      
-      document.documentElement.setAttribute('dir', t.dir);
-      document.documentElement.setAttribute('lang', t.lang);
-      
-      document.getElementById('txt-header-title').innerText = t.headerTitle;
-      document.getElementById('txt-header-sub').innerText = t.headerSub;
-      document.getElementById('txt-form-title').innerText = t.formTitle;
-      document.getElementById('txt-form-subtitle').innerText = t.formSubtitle;
-      
-      document.getElementById('lbl-firstName').innerText = t.firstName;
-      document.getElementById('firstName').placeholder = t.phFirstName;
-      
-      document.getElementById('lbl-lastName').innerText = t.lastName;
-      document.getElementById('lastName').placeholder = t.phLastName;
-      
-      document.getElementById('lbl-phone').innerText = t.phone;
-      document.getElementById('phone').placeholder = t.phPhone;
-      
-      document.getElementById('lbl-job').innerText = t.job;
-      document.getElementById('job').placeholder = t.phJob;
-      
-      submitBtn.innerText = t.submit;
-      document.getElementById('txt-footer').innerText = t.footer;
-      langLabel.innerText = t.btnLang;
+    function switchLanguage(l) {
+      curLang = l;
+      const data = i18n[l];
+      document.documentElement.dir = data.dir;
+      document.documentElement.lang = data.lang;
+
+      document.getElementById('t-title').innerText = data.title;
+      document.getElementById('t-sub').innerText = data.sub;
+
+      document.getElementById('l-firstName').innerText = data.firstName;
+      document.getElementById('firstName').placeholder = data.pFirstName;
+
+      document.getElementById('l-lastName').innerText = data.lastName;
+      document.getElementById('lastName').placeholder = data.pLastName;
+
+      document.getElementById('l-phone').innerText = data.phone;
+      document.getElementById('phone').placeholder = data.pPhone;
+
+      document.getElementById('l-job').innerText = data.job;
+      document.getElementById('job').placeholder = data.pJob;
+
+      submitBtn.innerText = data.submit;
+      document.getElementById('t-footer').innerText = data.footer;
+      langText.innerText = data.btn;
     }
 
-    langToggle.addEventListener('click', () => {
-      setLanguage(currentLang === 'ar' ? 'fr' : 'ar');
+    langBtn.addEventListener('click', () => {
+      switchLanguage(curLang === 'ar' ? 'fr' : 'ar');
     });
 
-    function checkInputs() {
-      let allFilled = true;
-      inputs.forEach(input => {
-        if (input.value.trim() === '') {
-          allFilled = false;
-        }
-      });
-      submitBtn.disabled = !allFilled;
+    function validate() {
+      let valid = true;
+      inputs.forEach(i => { if (i.value.trim() === '') valid = false; });
+      submitBtn.disabled = !valid;
     }
 
-    inputs.forEach(input => {
-      input.addEventListener('input', checkInputs);
-    });
+    inputs.forEach(i => i.addEventListener('input', validate));
 
-    form.addEventListener('submit', async function(e) {
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
-      const t = translations[currentLang];
-      
+      const data = i18n[curLang];
       submitBtn.disabled = true;
-      submitBtn.innerText = t.sending;
-
-      const formData = new FormData(form);
+      submitBtn.innerText = data.sending;
 
       try {
-        const response = await fetch('https://formspree.io/f/xnppzzrb', {
+        const res = await fetch('https://formspree.io/f/xnppzzrb', {
           method: 'POST',
-          body: formData,
-          headers: {
-            'Accept': 'application/json'
-          }
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
         });
 
-        if (response.ok) {
-          statusMsg.className = 'status-msg success';
-          statusMsg.innerText = t.success;
-          statusMsg.style.display = 'block';
+        if (res.ok) {
+          alertMsg.innerText = data.success;
+          alertMsg.style.display = 'block';
           form.reset();
-          checkInputs();
-          submitBtn.innerText = t.submit;
+          validate();
+          submitBtn.innerText = data.submit;
         } else {
-          alert(t.error);
-          submitBtn.innerText = t.submit;
-          checkInputs();
+          alert('Erreur lors de l\'envoi.');
+          submitBtn.innerText = data.submit;
+          validate();
         }
-      } catch (error) {
-        alert(t.error);
-        submitBtn.innerText = t.submit;
-        checkInputs();
+      } catch (err) {
+        alert('Erreur de connexion.');
+        submitBtn.innerText = data.submit;
+        validate();
       }
     });
   </script>
