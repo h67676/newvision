@@ -3,25 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
-  <meta name="theme-color" content="#0d0d12">
-  <title>N-Vision International — استمارة التسجيل</title>
+  <meta name="theme-color" content="#0a0a0f">
+  <title>NEW VISION INTERNATIONAL — استمارة التسجيل</title>
 
   <!-- Font Tajawal & Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg-dark: #0d0d12;
-      --card-bg: rgba(24, 24, 36, 0.75);
+      --bg-dark: #08080d;
+      --card-bg: rgba(20, 20, 32, 0.55);
+      --card-border: rgba(255, 140, 0, 0.22);
       --accent-orange: #ff8c00;
-      --accent-orange-glow: rgba(255, 140, 0, 0.4);
+      --accent-orange-glow: rgba(255, 140, 0, 0.45);
       --accent-purple: #a855f7;
-      --accent-purple-glow: rgba(168, 85, 247, 0.3);
+      --accent-purple-glow: rgba(168, 85, 247, 0.35);
       --text-main: #f8fafc;
-      --text-muted: #94a3b8;
-      --glass-border: rgba(255, 140, 0, 0.25);
+      --text-muted: #a0aec0;
+      --glass-input: rgba(10, 10, 18, 0.6);
     }
 
     * {
@@ -44,62 +45,85 @@
       overflow-x: hidden;
     }
 
+    /* Ambient Background Animated Orbs for Ultra-Glass Effect */
     .bg-orbs {
       position: fixed;
       top: 0; left: 0; width: 100vw; height: 100vh;
       pointer-events: none;
       z-index: 0;
+      overflow: hidden;
     }
     .orb {
       position: absolute;
       border-radius: 50%;
-      filter: blur(100px);
-      opacity: 0.35;
+      filter: blur(120px);
+      opacity: 0.4;
+      animation: floatOrb 12s infinite alternate ease-in-out;
     }
-    .orb-1 { width: clamp(250px, 40vw, 450px); height: clamp(250px, 40vw, 450px); background: #ff8c00; top: -50px; right: -50px; }
-    .orb-2 { width: clamp(280px, 45vw, 500px); height: clamp(280px, 45vw, 500px); background: #9333ea; bottom: -50px; left: -50px; }
+    .orb-1 {
+      width: clamp(300px, 45vw, 550px);
+      height: clamp(300px, 45vw, 550px);
+      background: #ff8c00;
+      top: -100px;
+      right: -80px;
+    }
+    .orb-2 {
+      width: clamp(320px, 50vw, 600px);
+      height: clamp(320px, 50vw, 600px);
+      background: #7e22ce;
+      bottom: -120px;
+      left: -80px;
+      animation-delay: -6s;
+    }
 
+    @keyframes floatOrb {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(30px, 40px) scale(1.1); }
+    }
+
+    /* Glass Header */
     header {
       width: 100%;
-      padding: clamp(0.8rem, 2vw, 1.2rem) clamp(1rem, 5vw, 8%);
+      padding: clamp(0.9rem, 2.5vw, 1.3rem) clamp(1rem, 6vw, 8%);
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(13, 13, 18, 0.85);
-      border-bottom: 1px solid var(--glass-border);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+      background: rgba(10, 10, 15, 0.65);
+      border-bottom: 1px solid var(--card-border);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       position: relative;
       z-index: 10;
       gap: 1rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
     }
 
     .company-logo {
       display: flex;
       align-items: center;
-      gap: 0.8rem;
+      gap: 0.9rem;
       flex-shrink: 0;
     }
 
     .logo-diamond {
-      width: clamp(38px, 5vw, 48px);
-      height: clamp(38px, 5vw, 48px);
-      background: #0d0d12;
-      border: 3px solid var(--accent-orange);
-      border-radius: 12px;
+      width: clamp(40px, 5vw, 50px);
+      height: clamp(40px, 5vw, 50px);
+      background: rgba(10, 10, 15, 0.8);
+      border: 2.5px solid var(--accent-orange);
+      border-radius: 14px;
       transform: rotate(45deg);
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 0 15px var(--accent-orange-glow);
+      box-shadow: 0 0 20px var(--accent-orange-glow);
     }
 
     .logo-symbol {
       transform: rotate(-45deg);
-      font-size: clamp(1.2rem, 2vw, 1.5rem);
+      font-size: clamp(1.3rem, 2.2vw, 1.6rem);
       font-weight: 800;
       color: var(--accent-purple);
-      text-shadow: 0 0 10px var(--accent-purple-glow);
+      text-shadow: 0 0 12px var(--accent-purple-glow);
     }
 
     .logo-text-wrap {
@@ -109,133 +133,141 @@
 
     .logo-title {
       font-weight: 800;
-      font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+      font-size: clamp(1rem, 1.6vw, 1.2rem);
       color: #fff;
+      letter-spacing: 0.5px;
     }
 
     .logo-sub {
       font-size: clamp(0.65rem, 1vw, 0.75rem);
       color: var(--accent-orange);
-      letter-spacing: 1px;
+      letter-spacing: 1.5px;
       font-weight: 700;
     }
 
     .company-title {
-      font-size: clamp(1rem, 1.8vw, 1.3rem);
+      font-size: clamp(1.05rem, 1.8vw, 1.35rem);
       font-weight: 800;
       color: #fff;
       text-align: center;
     }
     .company-title span {
       color: var(--accent-purple);
-      font-size: clamp(0.75rem, 1.2vw, 0.85rem);
+      font-size: clamp(0.78rem, 1.2vw, 0.88rem);
       display: block;
       font-weight: 500;
+      margin-top: 2px;
     }
 
+    /* Glass Language Button */
     .lang-btn {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 140, 0, 0.3);
-      padding: 0.5rem 1rem;
-      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 140, 0, 0.35);
+      padding: 0.55rem 1.1rem;
+      border-radius: 14px;
       color: #fff;
       font-size: 0.85rem;
       font-weight: 700;
       cursor: pointer;
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      transition: all 0.3s ease;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       display: flex;
       align-items: center;
       gap: 0.5rem;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
       flex-shrink: 0;
     }
 
     .lang-btn:hover {
-      background: rgba(255, 140, 0, 0.15);
+      background: rgba(255, 140, 0, 0.18);
       border-color: var(--accent-orange);
-      box-shadow: 0 0 15px var(--accent-orange-glow);
-      transform: translateY(-1px);
+      box-shadow: 0 0 20px var(--accent-orange-glow);
+      transform: translateY(-2px);
     }
 
+    /* Main Container & Modern Glass Form */
     main {
       position: relative;
       z-index: 1;
       width: 100%;
-      max-width: 550px;
-      padding: clamp(1.5rem, 5vw, 2.5rem) 1.2rem;
+      max-width: 540px;
+      padding: clamp(1.8rem, 5vw, 3rem) 1.2rem;
       margin: auto 0;
     }
 
     .form-card {
       background: var(--card-bg);
-      border: 1px solid var(--glass-border);
-      border-radius: clamp(16px, 4vw, 24px);
-      padding: clamp(1.8rem, 5vw, 2.5rem) clamp(1.2rem, 4vw, 2rem);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+      border: 1px solid var(--card-border);
+      border-radius: clamp(20px, 4vw, 28px);
+      padding: clamp(2rem, 5vw, 2.8rem) clamp(1.4rem, 4vw, 2.2rem);
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      position: relative;
     }
 
     .form-card h2 {
-      font-size: clamp(1.3rem, 2.5vw, 1.6rem);
+      font-size: clamp(1.4rem, 2.5vw, 1.7rem);
       color: #fff;
       margin-bottom: 0.4rem;
       text-align: center;
+      font-weight: 800;
     }
 
     .form-card p {
       color: var(--text-muted);
-      font-size: clamp(0.85rem, 1.5vw, 0.95rem);
+      font-size: clamp(0.88rem, 1.5vw, 0.98rem);
       text-align: center;
-      margin-bottom: 1.8rem;
+      margin-bottom: 2rem;
     }
 
     .form-group {
-      margin-bottom: 1.2rem;
+      margin-bottom: 1.3rem;
     }
 
     .form-group label {
       display: block;
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.45rem;
       font-size: 0.95rem;
       color: var(--text-main);
-      font-weight: 500;
+      font-weight: 600;
     }
 
     .form-control {
       width: 100%;
-      padding: 0.85rem 1.1rem;
-      background: rgba(13, 13, 18, 0.7);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 12px;
+      padding: 0.9rem 1.2rem;
+      background: var(--glass-input);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 14px;
       color: #fff;
       font-size: 1rem;
       outline: none;
       transition: all 0.3s ease;
-      appearance: none;
-      -webkit-appearance: none;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
     }
 
     .form-control:focus {
       border-color: var(--accent-orange);
-      box-shadow: 0 0 15px var(--accent-orange-glow);
+      background: rgba(15, 15, 25, 0.85);
+      box-shadow: 0 0 20px var(--accent-orange-glow);
     }
 
+    /* Elevated Glass Button */
     .btn-submit {
       width: 100%;
-      padding: 0.95rem;
-      margin-top: 1rem;
-      background: linear-gradient(135deg, var(--accent-orange), #d97706);
+      padding: 1rem;
+      margin-top: 1.2rem;
+      background: linear-gradient(135deg, var(--accent-orange), #ea580c);
       border: none;
-      border-radius: 12px;
+      border-radius: 14px;
       color: #fff;
-      font-size: 1.05rem;
-      font-weight: 700;
+      font-size: 1.1rem;
+      font-weight: 800;
       cursor: pointer;
       transition: all 0.3s ease;
-      box-shadow: 0 4px 20px var(--accent-orange-glow);
+      box-shadow: 0 6px 25px var(--accent-orange-glow);
     }
 
     .btn-submit:disabled {
@@ -243,25 +275,26 @@
       color: #71717a;
       cursor: not-allowed;
       box-shadow: none;
-      opacity: 0.6;
+      opacity: 0.55;
     }
 
     .btn-submit:not(:disabled):hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 25px rgba(255, 140, 0, 0.6);
+      box-shadow: 0 10px 30px rgba(255, 140, 0, 0.65);
     }
 
     .status-msg {
-      margin-top: 1rem;
-      padding: 0.8rem;
-      border-radius: 10px;
+      margin-top: 1.2rem;
+      padding: 0.9rem;
+      border-radius: 12px;
       text-align: center;
-      font-weight: 600;
+      font-weight: 700;
       display: none;
+      backdrop-filter: blur(10px);
     }
 
     .status-msg.success {
-      background: rgba(34, 197, 94, 0.2);
+      background: rgba(34, 197, 94, 0.15);
       border: 1px solid #22c55e;
       color: #4ade80;
     }
@@ -269,9 +302,9 @@
     footer {
       position: relative;
       z-index: 10;
-      padding: 1.2rem;
+      padding: 1.5rem;
       color: var(--text-muted);
-      font-size: 0.8rem;
+      font-size: 0.82rem;
       text-align: center;
     }
 
@@ -283,20 +316,22 @@
       .company-title {
         order: 3;
         width: 100%;
-        margin-top: 0.4rem;
-        padding-top: 0.4rem;
-        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        margin-top: 0.5rem;
+        padding-top: 0.5rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
       }
     }
   </style>
 </head>
 <body>
 
+  <!-- Ambient Animated Glass Orbs -->
   <div class="bg-orbs">
     <div class="orb orb-1"></div>
     <div class="orb orb-2"></div>
   </div>
 
+  <!-- Glass Header -->
   <header>
     <div class="company-logo">
       <div class="logo-diamond">
@@ -318,6 +353,7 @@
     </button>
   </header>
 
+  <!-- Main Glass Card Form -->
   <main>
     <div class="form-card">
       <h2 id="txt-form-title">ابدأ خطوتك الأولى الآن</h2>
@@ -352,7 +388,7 @@
   </main>
 
   <footer>
-    <span id="txt-footer">© 2026 N-VISION INTERNATIONAL — جميع الحقوق محفوظة.</span>
+    <span id="txt-footer">© 2026 NEW VISION INTERNATIONAL — جميع الحقوق محفوظة.</span>
   </footer>
 
   <script>
@@ -383,7 +419,7 @@
         sending: 'جاري الإرسال...',
         success: '✓ تم إرسال معلوماتك بنجاح إلى N-Vision International!',
         error: 'حدث خطأ أثناء الإرسال، يرجى المحاولة لاحقاً.',
-        footer: '© 2026 N-VISION INTERNATIONAL — جميع الحقوق محفوظة.',
+        footer: '© 2026 NEW VISION INTERNATIONAL — جميع الحقوق محفوظة.',
         btnLang: 'Français'
       },
       fr: {
@@ -405,7 +441,7 @@
         sending: 'Envoi en cours...',
         success: '✓ Vos informations ont été envoyées avec succès à N-Vision International !',
         error: 'Une erreur est survenue, veuillez réessayer plus tard.',
-        footer: '© 2026 N-VISION INTERNATIONAL — Tous droits réservés.',
+        footer: '© 2026 NEW VISION INTERNATIONAL — Tous droits réservés.',
         btnLang: 'العربية'
       }
     };
